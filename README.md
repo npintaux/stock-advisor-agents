@@ -78,46 +78,35 @@ antigravity chat "Run the multi-strategy portfolio screening on the CAC40 index.
 
 ## 🚀 Installation & Setup
 
-To install this plugin locally in your **Antigravity CLI** environment (or share it with your colleagues so they can run it), follow these simple steps to register the agents globally:
-
-### Option A: Install via Git Clone (Recommended)
-
-Colleagues can clone your GitHub repository directly into their global Antigravity configuration directory:
+To install this plugin locally in your **AGY CLI** environment so it is correctly recognized, loaded, and enabled, run the official installer command by pointing it to the absolute path of the plugin directory:
 
 ```bash
-# 1. Create the global configuration directory if it doesn't exist
-mkdir -p ~/.gemini/config/plugins
-
-# 2. Clone the repository directly as the "stock-advisors" plugin
-git clone https://github.com/npintaux/stock-advisor-agents.git ~/.gemini/config/plugins/stock-advisors
+agy plugins install /home/npintaux/Code/stock-advisor/_agents/plugins/stock-advisors
 ```
 
-### Option B: Local Installation from this Workspace
+> [!NOTE]
+> You can also use the singular `agy plugin install` command:
+> ```bash
+> agy plugin install /home/npintaux/Code/stock-advisor/_agents/plugins/stock-advisors
+> ```
 
-If you already have this repository cloned locally on your machine, you can install the plugin simply by copying or symlinking the plugin folder to your global config directory:
-
-```bash
-# 1. Ensure the global configuration directory exists
-mkdir -p ~/.gemini/config/plugins
-
-# 2. Copy the plugin subdirectory to the global config folder
-cp -r _agents/plugins/stock-advisors ~/.gemini/config/plugins/
-```
+This command automatically registers and initializes the plugin and its subagents inside your global Antigravity environment, ensuring they are ready to be used.
 
 ---
 
 ## 🔍 Verifying the Installation
 
-To verify that the subagents are successfully registered and discoverable by the Antigravity CLI:
+To verify that the plugin is successfully loaded and its subagents are discoverable by the AGY CLI:
 
 1. Open your terminal.
-2. Ask your Antigravity assistant or run the CLI list command to verify the loaded plugins:
+2. Run the plugin list command to verify it is loaded with both `installed` and `agents` components:
    ```bash
-   antigravity chat "What plugins do you have loaded?"
+   agy plugin list
    ```
-   The assistant will list `stock-advisors` with its 5 active agent profiles:
-   *   `multi-strategy-briefer`
-   *   `dividend-growth-advisor`
-   *   `growth-advisor`
-   *   `value-advisor`
-   *   `swing-trading-advisor`
+3. Run a prompt querying your AGY assistant about the loaded plugins:
+   ```bash
+   agy --prompt "What plugins do you have loaded?"
+   ```
+   The assistant will output that **Stock Advisors** is loaded as a specialized domain-specific plugin.
+
+4. You can now invoke any of the 5 specialized advisor subagents dynamically in your CLI session using their standard names (e.g., `dividend-growth-advisor`) without having to manually define them first!
