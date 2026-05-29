@@ -11,7 +11,7 @@ These advisors are declared natively as **Antigravity Subagents** inside a custo
 The workspace and global configuration follow this standardized layout:
 
 ```text
-stock-advisor/
+stock-advisor-agents/
 ├── README.md                          # This quick-start guide
 └── _agents/plugins/stock-advisors/     # Git-tracked plugin source directory
     ├── plugin.json                    # Plugin manifest and metadata
