@@ -1,6 +1,6 @@
 # 📈 Declarative CAC40 Multi-Strategy Stock Advisor
 
-This repository contains a fully file-based, zero-code **Antigravity CLI Plugin** that defines six elite financial advisor subagents: **Multi-Strategy Portfolio Coordinator**, **Dividend Growth**, **Growth**, **Value**, **Swing Trading**, and **CAC40 Swing Briefer**.
+This repository contains a fully file-based, zero-code **Antigravity CLI Plugin** that defines five elite financial advisor subagents: **Multi-Strategy Portfolio Coordinator**, **Dividend Growth**, **Growth**, **Value**, and **Swing Trading**.
 
 These advisors are declared natively as **Antigravity Subagents** inside a custom plugin structure. This design completely decouples the advisors' trading strategies, rules, and mathematical scorecards from any specific runner code—making them instantly discoverable and executable by both the **Antigravity Chat Assistant** and the **Antigravity CLI**.
 
@@ -17,7 +17,6 @@ stock-advisor/
     ├── plugin.json                    # Plugin manifest and metadata
     └── agents/                        # Declarative subagent templates (Markdown with YAML frontmatter)
         ├── multi-strategy-briefer.md  # Root Coordinator & Synthesis Agent
-        ├── cac40-swing-briefer.md     # Swing Trading Coordinator & Briefing Agent
         ├── dividend-growth.md         # Dividend Growth Investing (DGI) Specialist
         ├── growth.md                  # Hyper-growth & Market Disruption Analyst
         ├── value.md                   # Graham & Munger Deep-Value / Margin of Safety Expert
@@ -31,27 +30,24 @@ stock-advisor/
 
 ---
 
-## 🤖 The Six Advisor Profiles
+## 🤖 The Five Advisor Profiles
 
 ### 1. 🏆 Multi-Strategy Portfolio Coordinator (`multi-strategy-briefer.md`)
 *   **Philosophy**: Oversees the entire screening pipeline. Conducts broad CAC40 pre-screening, coordinates parallel delegation to specialized subagents, and synthesizes the results into a unified flagship dashboard.
 
-### 2. ⚡ CAC40 Swing Briefer (`cac40-swing-briefer.md`)
-*   **Philosophy**: Coordinates technical swing setups across all 40 component stocks, delegating ticker-by-ticker chart analyses and consolidating them into a daily market briefing.
-
-### 3. 💸 Dividend Growth Advisor (`dividend-growth.md`)
+### 2. 💸 Dividend Growth Advisor (`dividend-growth.md`)
 *   **Philosophy**: Focuses on "compounding machines"—recession-resistant, dividend-paying businesses with durable competitive advantages (e.g., Vinci, AXA, Air Liquide).
 *   **Core Metrics**: Payout ratios ($< 60\%$ Earnings, $< 65\%$ FCF), Net Debt/EBITDA $< 2.5\text{x}$, and Chowder Scores $> 12\%$.
 
-### 4. 🚀 Growth Stock Advisor (`growth.md`)
+### 3. 🚀 Growth Stock Advisor (`growth.md`)
 *   **Philosophy**: Focuses on identifying tomorrow's market leaders with massive Total Addressable Markets (TAM) and high reinvestment rates (e.g., Safran, Schneider Electric).
 *   **Core Metrics**: Revenue Growth $> 20\%$, Gross Margins $> 50\%$, and attractive PEG ratios.
 
-### 5. ⚖️ Value Stock Advisor (`value.md`)
+### 4. ⚖️ Value Stock Advisor (`value.md`)
 *   **Philosophy**: Classic deep-value investing under Graham and Munger principles. Identifies fundamentally sound businesses trading at a deep discount (e.g., Renault, Carrefour).
 *   **Core Metrics**: Low multiples (P/E $< 15\text{x}$, P/B $< 1.5\text{x}$), negative net automotive debt, and high shareholder yield.
 
-### 6. 📊 Swing Trading Advisor (`swing-trading.md`)
+### 5. 📊 Swing Trading Advisor (`swing-trading.md`)
 *   **Philosophy**: Technical momentum and price-action specialist. Captures short-term price swings over days or weeks with mechanical risk controls (e.g., STMicroelectronics).
 *   **Core Metrics**: Price relative to 20 EMA and 200 SMA, MACD breakouts, and strict $1:2$ Risk-to-Reward ratio models.
 
@@ -80,47 +76,48 @@ antigravity chat "Run the multi-strategy portfolio screening on the CAC40 index.
 
 ---
 
-## 🚀 Git Initialization & Pushing to GitHub
+## 🚀 Installation & Setup
 
-To save this codebase under version control and share it with your colleagues on GitHub, execute the following commands in your local terminal inside `/home/npintaux/Code/stock-advisor`:
+To install this plugin locally in your **Antigravity CLI** environment (or share it with your colleagues so they can run it), follow these simple steps to register the agents globally:
 
-### Step 1: Initialize Git Local Repository
+### Option A: Install via Git Clone (Recommended)
+
+Colleagues can clone your GitHub repository directly into their global Antigravity configuration directory:
+
 ```bash
-git init
+# 1. Create the global configuration directory if it doesn't exist
+mkdir -p ~/.gemini/config/plugins
+
+# 2. Clone the repository directly as the "stock-advisors" plugin
+git clone https://github.com/npintaux/stock-advisor-agents.git ~/.gemini/config/plugins/stock-advisors
 ```
 
-### Step 2: Add Files & Create Your First Commit
-Create a `.gitignore` to prevent tracking virtual environments and system logs, then stage and commit:
+### Option B: Local Installation from this Workspace
+
+If you already have this repository cloned locally on your machine, you can install the plugin simply by copying or symlinking the plugin folder to your global config directory:
+
 ```bash
-# Ignore virtual environments and system files
-echo "test_venv/" >> .gitignore
-echo "*.log" >> .gitignore
-echo ".system_generated/" >> .gitignore
+# 1. Ensure the global configuration directory exists
+mkdir -p ~/.gemini/config/plugins
 
-# Stage all files
-git add .
-
-# Create the initial commit
-git commit -m "feat: initial commit of stock-advisor multi-agent plugin"
+# 2. Copy the plugin subdirectory to the global config folder
+cp -r _agents/plugins/stock-advisors ~/.gemini/config/plugins/
 ```
 
-### Step 3: Link Your Local Repository to GitHub
-1. Go to your GitHub account in your web browser.
-2. Click the **"+"** icon in the top right -> **New repository**.
-3. Name your repository: `stock-advisor-agents` (you can leave description and README blank since we already have them).
-4. Click **Create repository**.
-5. Copy the remote URL (e.g., `git@github.com:your-username/stock-advisor-agents.git` or `https://github.com/your-username/stock-advisor-agents.git`).
+---
 
-### Step 4: Rename Branch & Push to GitHub
-Paste the URL in the commands below to link and push your files:
-```bash
-# Rename default branch to main
-git branch -M main
+## 🔍 Verifying the Installation
 
-# Add the remote link (replace with your actual copied URL)
-git remote add origin https://github.com/your-username/stock-advisor-agents.git
+To verify that the subagents are successfully registered and discoverable by the Antigravity CLI:
 
-# Push to your main branch
-git push -u origin main
-```
-Your colleagues can now easily download or clone this workspace to get started!
+1. Open your terminal.
+2. Ask your Antigravity assistant or run the CLI list command to verify the loaded plugins:
+   ```bash
+   antigravity chat "What plugins do you have loaded?"
+   ```
+   The assistant will list `stock-advisors` with its 5 active agent profiles:
+   *   `multi-strategy-briefer`
+   *   `dividend-growth-advisor`
+   *   `growth-advisor`
+   *   `value-advisor`
+   *   `swing-trading-advisor`
