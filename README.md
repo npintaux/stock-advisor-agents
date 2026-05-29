@@ -26,7 +26,7 @@ stock-advisor/
 - **Global Config Path** (for Antigravity CLI & global discovery):
   `~/.gemini/config/plugins/stock-advisors/`
 - **Workspace Config Path** (for repository scoping):
-  `/home/npintaux/Code/stock-advisor/_agents/plugins/stock-advisors/`
+  `[path to stock-advisor-agents]/_agents/plugins/stock-advisors/`
 
 ---
 
@@ -81,13 +81,13 @@ antigravity chat "Run the multi-strategy portfolio screening on the CAC40 index.
 To install this plugin locally in your **AGY CLI** environment so it is correctly recognized, loaded, and enabled, run the official installer command by pointing it to the absolute path of the plugin directory:
 
 ```bash
-agy plugins install /home/npintaux/Code/stock-advisor/_agents/plugins/stock-advisors
+agy plugins install [path to stock-advisor-agents]/_agents/plugins/stock-advisors
 ```
 
 > [!NOTE]
 > You can also use the singular `agy plugin install` command:
 > ```bash
-> agy plugin install /home/npintaux/Code/stock-advisor/_agents/plugins/stock-advisors
+> agy plugin install [path to stock-advisor-agents]/_agents/plugins/stock-advisors
 > ```
 
 This command automatically registers and initializes the plugin and its subagents inside your global Antigravity environment, ensuring they are ready to be used.
@@ -109,4 +109,12 @@ To verify that the plugin is successfully loaded and its subagents are discovera
    ```
    The assistant will output that **Stock Advisors** is loaded as a specialized domain-specific plugin.
 
-4. You can now invoke any of the 5 specialized advisor subagents dynamically in your CLI session using their standard names (e.g., `dividend-growth-advisor`) without having to manually define them first!
+4. You can now invoke any of the 5 specialized advisor subagents dynamically in your AGY CLI or Antigravity chat session using their standard names (e.g., `dividend-growth-advisor`) without having to manually define them first!
+    ```bash
+    Run the multi-strategy portfolio screening on the CAC40 index.
+    ```
+    or
+    ```bash
+    Analyze the dividend potential for GOOGLE (GOOGL).
+    ```
+
