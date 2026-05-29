@@ -1,0 +1,9 @@
+{
+  "name": "stock-advisors",
+  "version": "1.0.0",
+  "description": "Financial advisor agents for different stock strategies: Dividend Growth, Growth, Value, and Swing Trading",
+  "author": {
+    "name": "Antigravity"
+  },
+  "license": "Apache-2.0"
+}
